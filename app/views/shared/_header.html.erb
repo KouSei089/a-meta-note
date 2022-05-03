@@ -1,0 +1,43 @@
+<!-- ログイン前 header -->
+<div class="navbar bg-natural py-10">
+  <div class="flex-1">
+    <%= link_to 'a meta note', root_path, class: "text-4xl ml-16" %>
+  </div>
+  <div class="flex-none">
+    <label tabindex="0" class="btn btn-ghost btn-circle mx-5">
+      <%= link_to "#", class: 'btn btn-ghost btn-circle' do %>
+        <i class="fa-solid fa-user-plus text-xl"></i>
+      <% end %>
+    </label>
+    <div tabindex="0" class="mx-5">
+      <%= link_to "#", class: 'btn btn-ghost btn-circle' do %>
+        <i class="fa-solid fa-arrow-right-to-bracket text-xl"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- ログイン後 header -->
+<div class="navbar bg-base-100 py-10">
+  <div class="flex-1">
+    <%= link_to 'a meta note', root_path, class: "text-4xl ml-16" %>
+  </div>
+  <div class="flex-none">
+    <div tabindex="0" class="mx-5">
+      <%= link_to "#", class: 'btn btn-ghost btn-circle' do %>
+        <i class="fa-solid fa-map text-xl"></i>
+      <% end %>
+    </div>
+    <div class="dropdown dropdown-end">
+      <label tabindex="0" class="btn btn-ghost btn-circle avatar mx-5">
+        <div class="w-10 rounded-full">
+          <img src="https://api.lorem.space/image/face?hash=33791" />
+        </div>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Schedule Base</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

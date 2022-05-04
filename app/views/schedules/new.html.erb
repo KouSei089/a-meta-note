@@ -1,4 +1,31 @@
-<div>
+<div class="mx-24 mt-12 ">
   <h1 class="font-bold text-4xl">Schedules#new</h1>
-  <p>Find me in app/views/schedules/new.html.erb</p>
+  <div class="flex justify-center">
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Analysis</h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= form_with model: @schedule, local: true do |f| %>
+    <div>
+      <%= f.label "タイトル" %>
+      <%= f.date_select :title %>
+    </div>
+    <div>
+      <%= f.label "task_category" %>
+    </div>
+    <div>
+      <%= f.label "task_title" %>
+    </div>
+    <div>
+      <%= f.label "task_time" %>
+    </div>
+    <%= f.submit "登録" %>
+  <% end %>
 </div>

@@ -1,0 +1,27 @@
+<div>
+  <h1 class="font-bold text-4xl ml-12">Schedules Index</h1>
+  <div class="flex justify-center">
+    <div class="grid grid-cols-3 gap-3">
+      <%= button_to new_schedule_path, method: :get do %>
+        <div class="card w-96 pt-32 pb-48 bg-primary hover:bg-base-300 shadow-xl mx-5 mt-5">
+          <div class="card-body items-center text-center">
+            <div class="card-actions">
+              <i class="fa-solid fa-plus text-6xl mt-12"></i>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% @schedules.each do |schedule| %>
+        <div class="card w-96 py-32 bg-base-100 shadow-xl mx-5 mt-5">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title"><%= link_to schedule.id, schedule_path(schedule) %></h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div class="card-actions">
+              <button class="btn btn-primary"><%= schedule.title %></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

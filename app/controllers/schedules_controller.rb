@@ -3,7 +3,9 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
-  def show; end
+  def show
+    @schedule = Schedule.find(params[:id])
+  end
 
   def new
     @schedule = Schedule.new

@@ -1,9 +1,14 @@
 <h1>Login</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', users_path %>
-<%# <div>
-  <h1 class="font-bold text-4xl">UserSessions#new</h1>
-  <p>Find me in app/views/user_sessions/new.html.erb</p>
-</div> %>
+<%= form_with url: login_path, method: :post do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Login" %>
+  </div>
+<% end %>

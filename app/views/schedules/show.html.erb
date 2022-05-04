@@ -14,5 +14,8 @@
   </div>
   <%= @schedule.id %>
   <%= @schedule.title %>
+  <%= button_to edit_schedule_path(@schedule), method: :get do %>
+    <i class="fa-solid fa-pen"></i>
+  <% end %>
   <%= link_to "トップページ", root_path %>
 </div>

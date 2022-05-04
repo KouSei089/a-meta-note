@@ -16,6 +16,7 @@ gem "bootsnap", require: false
 gem "rails-i18n"
 gem 'gon', '~> 6.2.0'
 gem 'meta-tags'
+gem 'sorcery'
 # gem "redis", "~> 4.0"
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"

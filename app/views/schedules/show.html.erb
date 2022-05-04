@@ -17,5 +17,6 @@
   <%= button_to edit_schedule_path(@schedule), method: :get do %>
     <i class="fa-solid fa-pen"></i>
   <% end %>
+  <%= button_to "Delete", @schedule, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
   <%= link_to "トップページ", root_path %>
 </div>

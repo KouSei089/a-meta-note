@@ -27,10 +27,16 @@ class SchedulesController < ApplicationController
   def update
     schedule = Schedule.find(params[:id])
     if schedule.update(schedule_params)
-      redirect_to schedules_path, notice: 'Schedule dedit comp'
+      redirect_to schedules_path, notice: 'Schedule edit comp'
     else
       render :edit
     end
+  end
+
+  def destroy
+    schedule = Schedule.find(params[:id])
+    schedule.destroy!
+    redirect_to schedules_path, notice: 'Schedule delete comp'
   end
 
   private

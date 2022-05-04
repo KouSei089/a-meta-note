@@ -4,7 +4,28 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @user %>
+    <div id="<%= dom_id user %>">
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Email:</strong>
+        <%= user.email %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Crypted password:</strong>
+        <%= user.crypted_password %>
+      </p>
+
+      <p class="my-5">
+       <strong class="block font-medium mb-1">Salt:</strong>
+       <%= user.salt %>
+      </p>
+
+      <% if action_name != "show" %>
+        <%= link_to "Show this user", user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to 'Edit this user', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <hr class="mt-6">
+      <% end %>
+    </div>
 
     <%= link_to 'Edit this user', edit_user_path(@user), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">

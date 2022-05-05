@@ -28,27 +28,23 @@
 
 ---------
 
-<div class="chart-container p-20 bg-white rounded-3xl flex justify-center">
+<div class="w-96 h-96">
   <canvas id="myChart"></canvas>
 </div>
 
 <script>
   const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
+    'Programming',
+    'Human Resource',
+    'Routing',
   ];
 
   const data = {
     labels: labels,
     datasets: [{
       label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [45, 15, 30, 10],
+      backgroundColor: ['rgb(255, 99, 132, 0.5)', 'rgb(25, 49, 100, 0.5)', 'rgb(25, 39, 32, 0.5)'],
+      data: [45, 25, 30],
     }]
   };
 
@@ -74,13 +70,3 @@
     config
   );
 </script>
-
-<style>
-.canvas-container {
-    position: relative;
-    width:  calc(100% - 40px);
-    height: 300px;
-    overflow: hidden;
-    margin:20px;
-}
-</style>

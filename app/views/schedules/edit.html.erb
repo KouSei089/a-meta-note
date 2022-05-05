@@ -1,15 +1,49 @@
 <div class="mx-24 mt-12 ">
   <h1 class="font-bold text-4xl">Schedules#edit</h1>
   <div class="flex justify-center">
-    <div class="card w-96 bg-base-100 shadow-xl">
-      <div class="card-body">
-        <h2 class="card-title">Analysis</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary">Buy Now</button>
-        </div>
-      </div>
+    <div class="w-96 h-96">
+      <canvas id="myChart"></canvas>
     </div>
   </div>
   <%= render "schedules/form", schedule: @schedule %>
 </div>
+
+
+<script>
+  const labels = [
+    'Programming',
+    'Human Resource',
+    'Routing',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: ['rgb(255, 99, 132, 0.5)', 'rgb(25, 49, 100, 0.5)', 'rgb(25, 39, 32, 0.5)'],
+      data: [45, 25, 30],
+    }]
+  };
+
+  const config = {
+  type: 'polarArea',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Polar Area Chart'
+      }
+    }
+  },
+};
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>

@@ -12,6 +12,23 @@
     <i class="fa-solid fa-pen"></i>
   <% end %>
 
+  <p>タスクの追加</p>
+
+  <%= form_with(model: [@schedule, Task.new], method: :post) do |f| %>
+    <%= f.text_field :title %>
+    <%= f.number_field :category_id %>
+    <%= f.time_field :resource %>
+    <%= f.hidden_field :schedule_id, value: @schedule.id %>
+    <%= f.submit "追加" %>
+  <% end %>
+
+  <p>タスクの一覧</p>
+  <% @tasks.each do |task| %>
+    <%= task.title %>
+    <%= task.category_id %>
+    <%= task.resource %>
+  <% end %>
+
   <label for="my-modal"><i class="fa-solid fa-trash"></i></label>
   <input type="checkbox" id="my-modal" class="modal-toggle">
     <div class="modal">

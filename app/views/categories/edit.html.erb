@@ -1,0 +1,6 @@
+<div class="">
+  <%= form_with model: @category, url: categories_path(category), method: :patch, local: true do |form| %>
+  <%= form.text_field :content %>
+  <%= form.submit '投稿する' %>
+  <% end %>
+</div>

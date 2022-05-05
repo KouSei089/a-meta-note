@@ -1,0 +1,10 @@
+<div class="">
+  <% @categories.each do |category| %>      
+  <% end %>
+  <p>
+  <%= link_to "Edit", root_path, method: :get,local: true %>
+  </p>
+  <p>
+  <%= link_to "Delete", root_path, method: :delete,local: true %>
+  </p>
+</div>

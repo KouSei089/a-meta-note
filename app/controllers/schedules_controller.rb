@@ -38,7 +38,7 @@ class SchedulesController < ApplicationController
   private
 
     def schedule_params
-      params.require(:schedule).permit(:title)
+      params.require(:schedule).permit(:title, tasks_attributes: [:title, :resource, :category_id, :_destroy, :id])
     end
 
     def set_schedule

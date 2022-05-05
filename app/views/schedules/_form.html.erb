@@ -1,7 +1,21 @@
 <%= form_with model: schedule, local: true do |f| %>
   <div>
-    <%= f.label "タイトル" %>
+    <%= f.label "Date" %>
     <%= f.date_select :title %>
   </div>
+  <%= f.fields_for :tasks, schedule.tasks.build do |task| %>
+    <div>
+      <%= task.label "Title" %>
+      <%= task.text_field :title %>
+    </div>
+    <div>
+      <%= task.label "Resorce" %>
+      <%= task.time_field :resource %>
+    </div>
+    <div>
+      <%= task.label "Category" %>
+      <%= task.number_field :category_id %>
+    </div>
+  <% end %>
   <button type="submit" class="btn">submit</button>
 <% end %>

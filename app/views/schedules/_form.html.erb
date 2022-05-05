@@ -7,13 +7,11 @@
     <%= f.label "task_category" %>
   </div>
   <div>
-    <%= link_to "category", new_category_path, method: :get,local: true %>
-  </div>
-  <div>
     <%= f.label "task_title" %>
   </div>
   <div>
     <%= f.label "task_time" %>
   </div>
   <%= f.submit "登録" %>
+  <button type="submit" class="btn">submit</button>
 <% end %>

@@ -16,23 +16,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_002928) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_categories_on_task_id"
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.date "title"
+    t.date "title", null: false
     t.float "analysis"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "task_title", null: false
-    t.integer "task_category_id", null: false
-    t.time "task_resource", null: false
+    t.string "title", null: false
+    t.integer "category_id", null: false
+    t.time "resource", null: false
+    t.bigint "schedule_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_tasks_on_schedule_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,8 +47,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_002928) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
+    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "categories", "tasks"
+  add_foreign_key "schedules", "users"
+  add_foreign_key "tasks", "schedules"
 end

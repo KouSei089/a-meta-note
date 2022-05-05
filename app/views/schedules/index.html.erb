@@ -25,3 +25,62 @@
     </div>
   </div>
 </div>
+
+---------
+
+<div class="chart-container p-20 bg-white rounded-3xl flex justify-center">
+  <canvas id="myChart"></canvas>
+</div>
+
+<script>
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [45, 15, 30, 10],
+    }]
+  };
+
+  const config = {
+  type: 'polarArea',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Polar Area Chart'
+      }
+    }
+  },
+};
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+<style>
+.canvas-container {
+    position: relative;
+    width:  calc(100% - 40px);
+    height: 300px;
+    overflow: hidden;
+    margin:20px;
+}
+</style>

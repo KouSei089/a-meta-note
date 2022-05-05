@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "top_pages#show"
   resources :schedules do
-    resources :tasks, only: [:new]
+    resources :tasks, only: [:new] do
+      resources :categories, [:new]
+    end
   end
   resources :users, only: [:new, :create]
   get 'login' => 'user_sessions#new', :as => :login

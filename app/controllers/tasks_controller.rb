@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
-      redirect_back fallback_location: root_path
+      flash.now.notice = "タスクを登録しました。"
     else
       redirect_to schedules_path
     end

@@ -17,7 +17,8 @@
     <%= form_with(model: [@schedule, @task], method: :post) do |f| %>
       <%= f.text_field :title %>
       <%= f.collection_select :category, Category.all, :name, :name, options = { include_blank: true} %>
-      <%= f.time_field :resource %>
+      <%= f.time_field :time_start %>
+      <%= f.time_field :time_end %>
       <%= f.hidden_field :schedule_id, value: @schedule.id %>
       <%= f.submit "追加" %>
     <% end %>

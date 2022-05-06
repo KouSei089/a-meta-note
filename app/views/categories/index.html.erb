@@ -1,0 +1,12 @@
+ <div class="">
+  <% @categories.each do |category| %>
+    <%= category.id %>
+    <%= category.name %>
+  <p>
+  <%= link_to "Edit", edit_category_path(category), method: :get %>
+  </p>
+  <p>
+  <%= link_to "Delete", category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  </p>
+  <% end %>
+</div>

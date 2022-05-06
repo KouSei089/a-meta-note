@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(task_params)
+    @task.percent_calculation
     if @task.save
       flash.now.notice = "タスクを登録しました。"
     else

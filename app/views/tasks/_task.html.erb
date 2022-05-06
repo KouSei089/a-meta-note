@@ -1,6 +1,7 @@
 <%= turbo_frame_tag task do %>
   <%= task.title %>
   <%= task.category %>
-  <%= task.time_start %>
-  <%= task.time_end %>
+  <%= task.time_start.strftime( "%H:%M" ) %>
+  <%= task.time_end.strftime( "%H:%M" ) %>
+  <%= task.percent %>%
 <% end %>

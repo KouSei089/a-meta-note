@@ -1,16 +1,7 @@
 <%= form_with model: schedule, local: true do |f| %>
   <div>
-    <%= f.label "タイトル" %>
+    <%= f.label "Date" %>
     <%= f.date_select :title %>
-  </div>
-  <div>
-    <%= f.label "task_category" %>
-  </div>
-  <div>
-    <%= f.label "task_title" %>
-  </div>
-  <div>
-    <%= f.label "task_time" %>
   </div>
   <%= f.submit "登録" %>
   <button type="submit" class="btn">submit</button>

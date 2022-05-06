@@ -5,7 +5,10 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
-  def show; end
+  def show
+    @tasks = @schedule.tasks
+    @task = current_user.tasks.new
+  end
 
   def new
     @schedule = Schedule.new

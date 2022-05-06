@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_002928) do
 
   create_table "schedules", force: :cascade do |t|
     t.date "title", null: false
-    t.float "analysis"
+    t.integer "analysis"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,25 +33,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_002928) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "category_id", null: false
-    t.time "resource", null: false
+    t.string "category", null: false
+    t.time "time_start", null: false
+    t.time "time_end", null: false
+    t.integer "percent"
     t.bigint "schedule_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schedule_id"], name: "index_tasks_on_schedule_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username", null: false
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "categories", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "tasks", "schedules"
+  add_foreign_key "tasks", "users"
 end

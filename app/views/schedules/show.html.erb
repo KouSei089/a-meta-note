@@ -1,33 +1,63 @@
-<div class="mx-24 mt-12">
-  <h1 class="font-bold text-4xl">Schedules#show</h1>
-  <p>Find me in app/views/schedules/show.html.erb</p>
+<div class="mt-12">
+  <div class="flex justify-start">
+    <h1 class="font-bold text-2xl"> Schedule</h1>
+    <%= @schedule.title %>
+    <%= button_to edit_schedule_path(@schedule), method: :get do %>
+      <i class="fa-solid fa-pen"></i>
+    <% end %>
+    <label for="my-modal"><i class="fa-solid fa-trash"></i></label>
+    <input type="checkbox" id="my-modal" class="modal-toggle">
+      <div class="modal">
+        <div class="modal-box relative">
+          <label for="my-modal" class="btn btn-sm btn-circle absolute right-3 top-3">✕</label>
+          <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
+          <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+          <div class="modal-action">
+            <%= button_to "#", method: :delete do %>
+              <label for="my-modal" class="btn btn-error">delete</label>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <%= link_to "一覧", schedules_path %>
+  </div>
   <div class="flex justify-center">
     <div class="w-96 h-96">
       <canvas id="myChart"></canvas>
     </div>
   </div>
-  <%= @schedule.id %>
-  <%= @schedule.title %>
-  <%= button_to edit_schedule_path(@schedule), method: :get do %>
-    <i class="fa-solid fa-pen"></i>
-  <% end %>
-
-  <label for="my-modal"><i class="fa-solid fa-trash"></i></label>
-  <input type="checkbox" id="my-modal" class="modal-toggle">
-    <div class="modal">
-      <div class="modal-box relative">
-        <label for="my-modal" class="btn btn-sm btn-circle absolute right-3 top-3">✕</label>
-        <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
-        <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-        <div class="modal-action">
-          <%= button_to "#", method: :delete do %>
-            <label for="my-modal" class="btn btn-error">delete</label>
-          <% end %>
+  <h2 class="text-2xl my-5">Time Schedule</h2>
+  <div id="tasks">
+    <%= render @tasks %>
+  </div>
+  <%= turbo_frame_tag [@schedule, @task] do %>
+    <%= form_with(model: [@schedule, @task], method: :post) do |f| %>
+      <div class="flex justfity-start pb-48 mt-5">
+        <button type="submit">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="relative group mx-2 z-0">
+          <input type="time" name="task[time_start]" id="task_time_start" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+          <label for="task_time_start" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Start</label>
         </div>
+        <div class="relative group mx-2 z-0">
+          <input type="time" name="task[time_end]" id="task_time_end" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+          <label for="task_time_end" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">End</label>
+        </div>
+        <div class="relative z-0 group mx-2">
+          <input type="text" name="task[title]" id="task_title" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+          <label for="task_title" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
+        </div>
+        <div class="relative mx-2">
+          <label class="text-xs text-gray-500 absolute bottom-9 scale-90">Category</label>
+          <%= f.collection_select :category, Category.all, :name, :name, options = { include_blank: true}, class: "py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
+        </div>
+        <%= f.hidden_field :schedule_id, value: @schedule.id %>
       </div>
-    </div>
-  <%= link_to "一覧", schedules_path %>
+    <% end %>
+  <% end %>
 </div>
+
 
 
 <script>

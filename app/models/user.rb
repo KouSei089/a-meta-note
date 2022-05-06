@@ -2,7 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :schedules, dependent: :destroy
-  has_many :category, dependent: :destroy
+  has_many :categories, dependent: :destroy
 
   validates :username, presence: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }

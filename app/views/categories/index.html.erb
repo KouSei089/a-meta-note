@@ -2,6 +2,7 @@
   <% @categories.each do |category| %>
     <%= category.id %>
     <%= category.name %>
+    <%= category.color %>
   <p>
   <%= link_to "Edit", edit_category_path(category), method: :get %>
   </p>

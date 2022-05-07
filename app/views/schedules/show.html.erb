@@ -28,7 +28,7 @@
   </div>
   <h2 class="text-2xl my-5">Time Schedule</h2>
   <div id="tasks">
-    <%= render partial: 'tasks/task', locals: { tasks: @tasks, schedule: @schedule }%>
+    <%= render @tasks %>
   </div>
   <%= turbo_frame_tag [@schedule, @task] do %>
     <%= form_with(model: [@schedule, @task], method: :post) do |f| %>
@@ -50,7 +50,7 @@
         </div>
         <div class="relative mx-2">
           <label class="text-xs text-gray-500 absolute bottom-9 scale-90">Category</label>
-          <%= f.collection_select :category, Category.all, :name, :name, options = { include_blank: true}, class: "py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
+          <%= f.collection_select :category, Category.all, :name, :name, options = { include_blank: true }, class: "py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
         </div>
         <%= f.hidden_field :schedule_id, value: @schedule.id %>
       </div>

@@ -11,6 +11,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    task = current_user.tasks.find(params[:id])
+    task.destroy
+    flash.now.notice = "タスクを削除しました。"
+  end
+
   private
 
     def task_params

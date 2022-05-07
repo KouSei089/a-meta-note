@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "top_pages#show"
   resources :schedules do
-    resources :tasks, only: [:new, :create]
+    resources :tasks, except: :show
   end
   resources :categories, except: :show
   resources :users, only: [:new, :create]

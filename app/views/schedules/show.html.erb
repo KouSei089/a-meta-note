@@ -28,13 +28,13 @@
   </div>
   <h2 class="text-2xl my-5">Time Schedule</h2>
   <div id="tasks">
-    <%= render @tasks %>
+    <%= render partial: 'tasks/task', locals: { tasks: @tasks, schedule: @schedule }%>
   </div>
   <%= turbo_frame_tag [@schedule, @task] do %>
     <%= form_with(model: [@schedule, @task], method: :post) do |f| %>
       <div class="flex justfity-start pb-48 mt-5">
-        <button type="submit">
-          <i class="fa-solid fa-plus"></i>
+        <button type="submit" class="mr-5">
+          <i class="fa-solid fa-plus text-2xl"></i>
         </button>
         <div class="relative group mx-2 z-0">
           <input type="time" name="task[time_start]" id="task_time_start" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />

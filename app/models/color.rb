@@ -7,8 +7,4 @@ class Color < ActiveHash::Base
     { id: 5, name: '緑' },
     { id: 6, name: '紫' }
   ]
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-
 end

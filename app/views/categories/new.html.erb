@@ -1,6 +1,7 @@
 <div class="">
-  <%= form_with model: @category, local: true do |form| %>
-  <%= form.text_field :name %>
-  <%= form.submit '投稿する' %>
+  <%= form_with model: @category, local: true do |f| %>
+  <%= f.collection_select(:color_id, Color.all, :name, :name, {}, {class:""}) %>
+  <%= f.text_field :name %>
+  <%= f.submit '投稿する' %>
   <% end %>
 </div>

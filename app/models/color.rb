@@ -5,9 +5,10 @@ class Color < ActiveHash::Base
     { id: 3, name: '橙' },
     { id: 4, name: '黄' },
     { id: 5, name: '緑' },
-    { id: 6, name: '紫' },
+    { id: 6, name: '紫' }
   ]
 
-  include ActiveHash::Associations
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  end
+
+end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :schedules do
     resources :tasks, only: [:new, :create]
   end
+  resources :tasks, only: :destroy
   resources :categories, except: :show
   resources :users, only: [:new, :create]
   get 'login' => 'user_sessions#new', :as => :login

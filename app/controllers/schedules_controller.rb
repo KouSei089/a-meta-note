@@ -8,6 +8,14 @@ class SchedulesController < ApplicationController
   def show
     @tasks = @schedule.tasks
     @task = current_user.tasks.new
+    @task_categoires = []
+    @task_percents = []
+    @tasks.each do |t|
+      @task_categoires.push(t.category_name)
+      @task_percents.push(t.percent)
+    end
+    gon.task_array = @task_categoires
+    gon.task_per = @task_percents
   end
 
   def new

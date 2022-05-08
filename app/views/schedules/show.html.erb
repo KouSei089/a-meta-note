@@ -61,18 +61,14 @@
 
 
 <script>
-  const labels = [
-    'Programming',
-    'Human Resource',
-    'Routing',
-  ];
+  const labels = gon.task_array
 
   const data = {
     labels: labels,
     datasets: [{
       label: 'My First dataset',
       backgroundColor: ['rgb(255, 99, 132, 0.5)', 'rgb(25, 49, 100, 0.5)', 'rgb(25, 39, 32, 0.5)'],
-      data: [45, 25, 30],
+      data: gon.task_per,
     }]
   };
 

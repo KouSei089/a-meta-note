@@ -27,5 +27,4 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-.rubocop.yml
 .rubocop_todo.yml

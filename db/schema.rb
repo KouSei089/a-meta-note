@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_002928) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
-    t.string "category", null: false
+    t.string "category_name", null: false
     t.time "time_start", null: false
     t.time "time_end", null: false
     t.integer "percent"

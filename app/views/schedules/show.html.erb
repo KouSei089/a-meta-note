@@ -61,14 +61,14 @@
 
 
 <script>
-  const labels = gon.task_array
+  const labels = gon.category_array
 
   const data = {
     labels: labels,
     datasets: [{
       label: 'My First dataset',
-      backgroundColor: ['rgb(255, 99, 132, 0.5)', 'rgb(25, 49, 100, 0.5)', 'rgb(25, 39, 32, 0.5)'],
-      data: gon.task_per,
+      backgroundColor: ['#000000', 'rgb(25, 49, 100, 1.0)', 'rgb(25, 39, 32, 0.5)'],
+      data: gon.percent_array,
     }]
   };
 

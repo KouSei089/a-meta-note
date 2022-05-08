@@ -4,10 +4,11 @@
       <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-natural">
           <i class="fa-solid fa-calendar text-xs text-blue-800"></i>
       </span>
-      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"><%= task.title %><span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"><%= task.category %></span></h3>
+      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"><%= task.title %><span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"><%= task.category_name %></span><%= button_to task_path(task), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか" } } do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %></h3>
       <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"><%= task.time_start.strftime( "%H:%M" ) %>-<%= task.time_end.strftime( "%H:%M" ) %></time>
       <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><%= task.percent %>%</p>
-      <%= button_to "削除", task_path(task), method: :delete, class: "btn btn-sm btn-outline-danger", form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
     </li>
   </ol>
 <% end %>

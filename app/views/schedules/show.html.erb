@@ -50,7 +50,7 @@
         </div>
         <div class="relative mx-2">
           <label class="text-xs text-gray-500 absolute bottom-9 scale-90">Category</label>
-          <%= f.collection_select :category, Category.all, :name, :name, options = { include_blank: true }, class: "py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
+          <%= f.collection_select :category_name, Category.all, :name, :name, options = { include_blank: true }, class: "py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
         </div>
         <%= f.hidden_field :schedule_id, value: @schedule.id %>
       </div>
@@ -61,18 +61,14 @@
 
 
 <script>
-  const labels = [
-    'Programming',
-    'Human Resource',
-    'Routing',
-  ];
+  const labels = gon.category_array
 
   const data = {
     labels: labels,
     datasets: [{
       label: 'My First dataset',
-      backgroundColor: ['rgb(255, 99, 132, 0.5)', 'rgb(25, 49, 100, 0.5)', 'rgb(25, 39, 32, 0.5)'],
-      data: [45, 25, 30],
+      backgroundColor: ['#000000', 'rgb(25, 49, 100, 1.0)', 'rgb(25, 39, 32, 0.5)'],
+      data: gon.percent_array,
     }]
   };
 

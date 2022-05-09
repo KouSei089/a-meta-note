@@ -4,7 +4,7 @@
       <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-natural">
           <i class="fa-solid fa-calendar text-xs text-blue-800"></i>
       </span>
-      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"><%= task.title %><%= render 'tasks/color', task: task%><%= button_to task_path(task), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか" } } do %>
+      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"><%= task.title %><%= render 'tasks/color', task: task %><%= button_to task_path(task), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか" } } do %>
         <i class="fa-solid fa-trash"></i>
       <% end %></h3>
       <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"><%= task.time_start.strftime( "%H:%M" ) %>-<%= task.time_end.strftime( "%H:%M" ) %></time>

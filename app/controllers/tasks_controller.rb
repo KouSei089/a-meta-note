@@ -5,6 +5,9 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
     @task.percent_calculation
     if @task.save
+      categories = Category.all
+      @categories_select = categories.select{|category| category.name == @task.category_name}
+      @task.categories << @categories_select[0]
       flash.now.notice = "タスクを登録しました。"
     else
       redirect_to schedules_path

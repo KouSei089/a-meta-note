@@ -1,8 +1,8 @@
-<div>
-  <h1 class="font-bold text-4xl ml-12">Schedules Index</h1>
+<div class="bg-natural pb-48">
+  <h1 class="font-bold text-4xl pl-12">Schedules Index</h1>
   <div class="flex justify-center">
     <div class="grid grid-cols-3 gap-3">
-      <%= button_to new_schedule_path, method: :get do %>
+      <button type="button" data-modal-toggle="authentication-modal">
         <div class="card w-96 pt-32 pb-48 bg-primary hover:bg-base-300 shadow-xl mx-5 mt-5">
           <div class="card-body items-center text-center">
             <div class="card-actions">
@@ -10,9 +10,10 @@
             </div>
           </div>
         </div>
-      <% end %>
+      </button>
+      <%= render 'schedules/modal_form', schedule: @schedule %>
       <% @schedules.each do |schedule| %>
-        <div class="card w-96 py-32 bg-base-100 shadow-xl mx-5 mt-5 relative">
+        <div class="card w-96 h-128 py-32 bg-base-100 shadow-xl mx-5 mt-5 relative">
           <p class="absolute top-1 left-1">Izumi.h</p>
           <div class="card-body items-center text-center">
             <div class="card-actions text-2xl"><%= schedule.title %></div>
@@ -30,3 +31,4 @@
     </div>
   </div>
 </div>
+<script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>

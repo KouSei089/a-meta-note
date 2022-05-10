@@ -1,8 +1,9 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_schedule, only: [:show, :destroy]
 
   def index
     @schedules = Schedule.all
+    @schedule = Schedule.new
   end
 
   def show
@@ -27,26 +28,12 @@ class SchedulesController < ApplicationController
     gon.color_array = @color_array
   end
 
-  def new
-    @schedule = Schedule.new
-  end
-
   def create
     schedule = current_user.schedules.build(schedule_params)
     if schedule.save
       redirect_to schedules_path, notice: 'Schedule was successfully created.'
     else
       render :new
-    end
-  end
-
-  def edit; end
-
-  def update
-    if @schedule.update(schedule_params)
-      redirect_to schedules_path, notice: 'Schedule edit comp'
-    else
-      render :edit
     end
   end
 

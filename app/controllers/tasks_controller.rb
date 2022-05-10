@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @task.percent_calculation
     if @task.save
       categories = Category.all
-      @categories_select = categories.select{|category| category.name == @task.category_name}
+      @categories_select = categories.select { |category| category.name == @task.category_name }
       @task.categories << @categories_select[0]
       flash.now.notice = "タスクを登録しました。"
     else

@@ -1,8 +1,8 @@
-<div>
-  <h1 class="font-bold text-4xl ml-12">Schedules Index</h1>
+<div class="bg-natural pb-48">
+  <h1 class="font-bold text-4xl pl-12">Schedules Index</h1>
   <div class="flex justify-center">
     <div class="grid grid-cols-3 gap-3">
-      <%= button_to new_schedule_path, method: :get do %>
+      <button type="button" data-modal-toggle="authentication-modal">
         <div class="card w-96 pt-32 pb-48 bg-primary hover:bg-base-300 shadow-xl mx-5 mt-5">
           <div class="card-body items-center text-center">
             <div class="card-actions">
@@ -10,18 +10,25 @@
             </div>
           </div>
         </div>
-      <% end %>
+      </button>
+      <%= render 'schedules/modal_form', schedule: @schedule %>
       <% @schedules.each do |schedule| %>
-        <div class="card w-96 py-32 bg-base-100 shadow-xl mx-5 mt-5">
+        <div class="card w-96 h-128 py-32 bg-base-100 shadow-xl mx-5 mt-5 relative">
+          <p class="absolute top-1 left-1">Izumi.h</p>
           <div class="card-body items-center text-center">
-            <h2 class="card-title"><%= link_to schedule.id, schedule_path(schedule) %></h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions">
-              <button class="btn btn-primary"><%= schedule.title %></button>
+            <div class="card-actions text-2xl"><%= schedule.title %></div>
+            <div class="mt-8">
+              <p>There are <span class="text-agate"><%= schedule.tasks.length %></span>tasks in this schedule.</p>
             </div>
+          </div>
+          <div class="">
+            <%= link_to schedule_path(schedule), class: "absolute left-36 bottom-0 pt-5 mb-0.5 bg-headline hover:bg-agate text-natural hover:text-headline w-24 rounded-t-full", method: :get do %>
+                <i class="fa-solid fa-chevron-up ml-10"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+<script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>

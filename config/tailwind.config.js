@@ -11,11 +11,15 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      height: {
+        '128': '32rem',
+      }
     },
     colors: {
       natural: '#f4f5f9',
       headline: '#272343',
-      maroon: '#8D2828'
+      maroon: '#8D2828',
+      agate: '#ff502f',
     }
   },
   plugins: [

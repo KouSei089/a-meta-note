@@ -15,7 +15,8 @@ module.exports = {
     colors: {
       natural: '#f4f5f9',
       headline: '#272343',
-      maroon: '#8D2828'
+      maroon: '#8D2828',
+      agate: '#ff502f',
     }
   },
   plugins: [

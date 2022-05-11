@@ -7,6 +7,9 @@ class CategoriesController < ApplicationController
 
   def create
     @category = current_user.categories.build(category_params)
+    colors = Color.all
+    @colors_select = colors.select { |color| color.name == @category.color }
+    @category.color_code = @colors_select[0].color_num
     if @category.save
       redirect_to categories_path
     else

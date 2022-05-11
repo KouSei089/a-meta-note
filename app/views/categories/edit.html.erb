@@ -1,6 +1,43 @@
-<div class="">
-  <%= form_with model: @category, local: true do |form| %>
-  <%= form.text_field :name %>
-  <%= form.submit '投稿する' %>
+<div class="h-screen bg-natural">
+  <%= form_with model: @category, local: true do |f| %>
+    <div class="flex justify-start mt-16">
+      <%= f.collection_select(:color, Color.all, :name, :name, {}, class: "mr-2 py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer") %>
+      <%= f.collection_select(:color_code, Color.all, :color_num, :color_num, {}, class: "py-2.5 px-0 w-44 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer") %>
+      <div class="relative group mx-2 z-0">
+        <input type="text" name="category[name]" id="category_name" class="block py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="category_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Start</label>
+      </div>
+      <%= f.submit 'Update', class: "btn btn-sm mt-2" %>
+    </div>
   <% end %>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-16">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Name</th>
+          <th scope="col" class="px-6 py-3">Color</th>
+          <th scope="col" class="px-6 py-3">rgba</th>
+          <th scope="col" class="px-6 py-3"><span class="sr-only">Edit</span></th>
+          <th scope="col" class="px-6 py-3"><span class="sr-only">Delete</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"><%= category.id %></th>
+          <td class="px-6 py-4"><%= category.name %></td>
+          <td class="px-6 py-4"><%= category.color %></td>
+          <td class="px-6 py-4"><%= category.color_code %></td>
+          <td class="px-6 py-4 text-right">
+            <p><%= link_to "Edit", edit_category_path(category), method: :get %></p>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <p><%= link_to "Delete", category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></p>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -2,11 +2,10 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
   def index
     @categories = Category.all
-  end
-
-  def new
     @category = Category.new
   end
+
+  def new; end
 
   def create
     @category = current_user.categories.build(category_params)

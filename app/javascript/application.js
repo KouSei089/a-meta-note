@@ -2,3 +2,9 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
+import jquery from "jquery"
+window.$ = jquery
+
+$(function() {
+  console.log("Hello Rails7!");
+})

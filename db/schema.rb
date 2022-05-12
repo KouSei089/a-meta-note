@@ -26,7 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_054835) do
 
   create_table "schedules", force: :cascade do |t|
     t.date "title", null: false
-    t.integer "analysis"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_054835) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
-    t.string "category_name", null: false
+    t.string "category_name", default: "Untitled", null: false
     t.time "time_start", null: false
     t.time "time_end", null: false
     t.integer "percent"

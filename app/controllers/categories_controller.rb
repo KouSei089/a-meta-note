@@ -31,8 +31,13 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
-    redirect_to categories_path
+    category_tasks = @category.tasks.each { |task| task.category_name = "Untitled" }
+    if category_tasks.each(&:save)
+      @category.destroy
+      redirect_to categories_path
+    else
+      render :index
+    end
   end
 
   private

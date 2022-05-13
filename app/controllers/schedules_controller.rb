@@ -43,7 +43,7 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule.destroy!
-    redirect_to schedules_path, notice: 'Schedule delete comp', status: :see_other
+    redirect_to schedules_path, notice: 'Schedule was successfully deleted.', status: :see_other
   end
 
   private

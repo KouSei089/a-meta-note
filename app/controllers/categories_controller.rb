@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
     category_tasks = @category.tasks.each { |task| task.category_name = "Untitled" }
     if category_tasks.each(&:save)
       @category.destroy
-      redirect_to categories_path, notice: 'Category delete successfully.'
+      redirect_to categories_path, notice: 'Category was successfully deleted.'
     else
       render :index
     end

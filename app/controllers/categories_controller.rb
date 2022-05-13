@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
     @colors_select = colors.select { |color| color.name == @category.color }
     @category.color_code = @colors_select[0].color_num
     if @category.save
-      redirect_to categories_path
+      redirect_to categories_path, notice: 'Category was successfully created.'
     else
       @categories = Category.all
       render :new
@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to categories_path
+      redirect_to categories_path, notice: 'Category was successfully updated.'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
     category_tasks = @category.tasks.each { |task| task.category_name = "Untitled" }
     if category_tasks.each(&:save)
       @category.destroy
-      redirect_to categories_path
+      redirect_to categories_path, notice: 'Category delete successfully.'
     else
       render :index
     end

@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :add_color_code, only: [:create, :update]
+
   def index
     @categories = Category.all
     @category = Category.new
@@ -7,9 +9,6 @@ class CategoriesController < ApplicationController
 
   def create
     @category = current_user.categories.build(category_params)
-    colors = Color.all
-    @colors_select = colors.select { |color| color.name == @category.color }
-    @category.color_code = @colors_select[0].color_num
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created.'
     else
@@ -44,6 +43,12 @@ class CategoriesController < ApplicationController
 
     def set_category
       @category = current_user.categories.find(params[:id])
+    end
+
+    def add_color_code
+      colors = Color.all
+      @colors_select = colors.select { |color| color.name == @category.color }
+      @category.color_code = @colors_select[0].color_num
     end
 
     def category_params

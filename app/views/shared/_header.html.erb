@@ -28,11 +28,6 @@
           <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Sort</span>
         </label>
       </div>
-      <div tabindex="0" class="px-5">
-        <%= link_to "#", class: 'btn btn-ghost btn-circle' do %>
-          <i class="fa-solid fa-map text-xl"></i>
-        <% end %>
-      </div>
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
@@ -40,8 +35,18 @@
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><%= link_to "Category", categories_path %></li>
-          <li><%= link_to "Logout", :logout, data: { turbo_method: :post } %></li>
+          <li><%= link_to schedules_path do %>
+            <p><i class="fa-solid fa-calendar mr-2"></i>Schedule Index</p>
+          <% end %></li>
+          <li><%= link_to "#" do %>
+            <p><i class="fa-solid fa-calendar-plus mr-2"></i>Schedule Base</p>
+          <% end %></li>
+          <li><%= link_to categories_path do %>
+            <p><i class="fa-solid fa-tag mr-2"></i>Category Create</p>
+          <% end %></li>
+          <li><%= link_to :logout, data: { turbo_method: :post }, class: 'border-t' do %>
+            <p><i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>Logout</p>
+          <% end %></li>
         </ul>
       </div>
     </div>

@@ -7,7 +7,7 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @tasks = @schedule.tasks
+    @tasks = @schedule.tasks.order(time_start: :asc)
     @task = current_user.tasks.new
     @category_array = []
     @percent_array = []

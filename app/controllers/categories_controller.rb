@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :edit]
 
   def index
-    @categories = Category.all
     @category = Category.new
   end
 
@@ -14,14 +14,11 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created.'
     else
-      @categories = Category.all
       render :new
     end
   end
 
-  def edit
-    @categories = Category.all
-  end
+  def edit; end
 
   def update
     if @category.update(category_params)
@@ -52,6 +49,10 @@ class CategoriesController < ApplicationController
 
     def set_category
       @category = current_user.categories.find(params[:id])
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 
     def category_params

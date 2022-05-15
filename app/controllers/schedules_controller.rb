@@ -20,7 +20,11 @@ class SchedulesController < ApplicationController
       else
         @category_array.push(t.category_name)
         @percent_array.push(t.percent)
-        @color_array.push(t.task_categories[0].category.color_code)
+        if @category_array.include?("Untitled")
+          @color_array.push("rgba(166,166,166,0.5)")
+        else
+          @color_array.push(t.task_categories[0].category.color_code)
+        end
       end
     end
     gon.category_array = @category_array

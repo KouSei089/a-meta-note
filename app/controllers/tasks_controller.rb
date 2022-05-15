@@ -4,10 +4,13 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     @task.percent_calculation
+    @task.category_name.presence || @task.category_name = ("Untitled")
     if @task.save
-      categories = Category.all
-      @categories_select = categories.select { |category| category.name == @task.category_name }
-      @task.categories << @categories_select[0]
+      unless @task.category_name == "Untitled"
+        categories = Category.all
+        @categories_select = categories.select { |category| category.name == @task.category_name }
+        @task.categories << @categories_select[0]
+      end
       flash.now.notice = "タスクを登録しました。"
     else
       redirect_to schedules_path

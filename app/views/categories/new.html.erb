@@ -1,8 +1,0 @@
-<div class="">
-  <%= form_with model: @category, local: true do |f| %>
-  <%= f.collection_select(:color, Color.all, :name, :name, {}, {class:""}) %>
-  <%= f.collection_select(:color_code, Color.all, :color_num, :color_num, {}, {class:""}) %>
-  <%= f.text_field :name %>
-  <%= f.submit '投稿する' %>
-  <% end %>
-</div>

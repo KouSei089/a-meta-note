@@ -2,14 +2,14 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
   def index
     @categories = Category.all
-  end
-
-  def new
     @category = Category.new
   end
 
   def create
     @category = current_user.categories.build(category_params)
+    colors = Color.all
+    @colors_select = colors.select { |color| color.name == @category.color }
+    @category.color_code = @colors_select[0].color_num
     if @category.save
       redirect_to categories_path
     else
@@ -18,7 +18,9 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+  end
 
   def update
     if @category.update(category_params)

@@ -2,7 +2,7 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :destroy]
 
   def index
-    @schedules = Schedule.all
+    @schedules = Schedule.order(title: :DESC)
     @schedule = Schedule.new
   end
 

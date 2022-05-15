@@ -1,5 +1,10 @@
 <%= render 'shared/flash' %>
 <div class="h-screen bg-natural">
+  <h1 class="font-bold text-2xl">
+  <span><%= link_to :back do %>
+  <i class="fa-solid fa-chevron-right pr-2"></i>
+  <% end %><span>Category Index
+  </h1>
   <%= form_with model: @category, local: true do |f| %>
     <div class="flex justify-start mt-16">
       <%= f.collection_select(:color, Color.all, :name, :name, {}, class: "mr-2 py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer") %>

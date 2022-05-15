@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
+
   def index
     @categories = Category.all
     @category = Category.new
@@ -24,7 +25,14 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to categories_path, notice: 'Category was successfully updated.'
+      colors = Color.all
+      @colors_select = colors.select { |color| color.name == @category.color }
+      @category.color_code = @colors_select[0].color_num
+      if @category.save
+        redirect_to categories_path, notice: 'Category was successfully updated.'
+      else
+        render :edit
+      end
     else
       render :edit
     end

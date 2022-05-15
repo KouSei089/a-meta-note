@@ -1,11 +1,11 @@
 class ScheduleBasesController < ApplicationController
   def index
-    @schedule_base = ScheduleBase.new
+    @schedule_basis = ScheduleBasis.new
   end
 
   def create
-    @schedule_base = current_user.schedule_bases.build(schedule_base_params)
-    if @schedule_base.save
+    @schedule_basis = current_user.schedule_bases.build(schedule_basis_params)
+    if @schedule_basis.save
       redirect_to schedule_bases_path
     else
       render :index
@@ -14,8 +14,8 @@ class ScheduleBasesController < ApplicationController
 
   private
 
-  def schedule_base_params
-    params.require(:schedule_base).permit(:title)
+  def schedule_basis_params
+    params.require(:schedule_basis).permit(:title)
   end
 
 end

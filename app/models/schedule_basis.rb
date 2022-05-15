@@ -1,4 +1,4 @@
-class ScheduleBase < ApplicationRecord
+class ScheduleBasis < ApplicationRecord
   belongs_to :user
   has_many :tasks, dependent: :destroy
 end

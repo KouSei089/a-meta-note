@@ -11,7 +11,7 @@ class TasksController < ApplicationController
         @categories_select = categories.select { |category| category.name == @task.category_name }
         @task.categories << @categories_select[0]
       end
-      flash.now.notice = "タスクを登録しました。"
+      flash.now.notice = "Task was successfully created."
     else
       redirect_to schedules_path
     end
@@ -20,7 +20,7 @@ class TasksController < ApplicationController
   def destroy
     task = current_user.tasks.find(params[:id])
     task.destroy
-    flash.now.notice = "タスクを削除しました。"
+    flash.now.notice = "Task was successfully deleted."
   end
 
   private

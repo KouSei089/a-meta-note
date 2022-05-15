@@ -44,6 +44,12 @@
           <li><%= link_to categories_path do %>
             <p><i class="fa-solid fa-tag mr-2"></i>Category Create</p>
           <% end %></li>
+          <li><%= link_to terms_regulation_path, class: 'border-t' do%>
+            <p><i class="fa-solid fa-book-open-reader mr-2"></i>Terms of Use</p>
+          <% end %></li>
+          <li><%= link_to privacy_regulation_path do %>
+            <p><i class="fa-solid fa-user-lock mr-2"></i>Privacy Policy</p>
+          <% end %></li>
           <li><%= link_to :logout, data: { turbo_method: :post }, class: 'border-t' do %>
             <p><i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>Logout</p>
           <% end %></li>

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   root "top_pages#show"
+  resource :regulation, only: [:terms, :privacy] do
+    collection do
+      get 'terms'
+      get 'privacy'
+    end
+  end
   resources :schedules do
     resources :tasks, only: [:new, :create]
   end

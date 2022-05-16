@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :schedule_bases, dependent: :destroy
   has_many :schedules, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  has_many :task_bases, dependent: :destroy
   has_many :categories, dependent: :destroy
 
   validates :username, presence: true

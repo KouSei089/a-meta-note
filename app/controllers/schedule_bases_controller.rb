@@ -15,8 +15,8 @@ class ScheduleBasesController < ApplicationController
 
   def show
     @schedule_basis = current_user.schedule_bases.find(params[:id])
-    @task = current_user.tasks.new
-    @tasks = @schedule_basis.tasks.all
+    @task_basis = current_user.task_bases.new
+    @task_bases = @schedule_basis.task_bases.all
   end
 
   private

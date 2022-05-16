@@ -31,6 +31,30 @@ class SchedulesController < ApplicationController
     gon.category_array = @category_array
     gon.percent_array = @percent_array
     gon.color_array = @color_array
+    #他
+    @schedule_basis = current_user.schedule_bases.find(1)
+    @task_basis =  @schedule_basis.task_bases.new
+    @basis_category_array = []
+    @basis_percent_array = []
+    @basis_color_array = []
+    @task_bases.each do |t|
+      if @basis_category_array.include?(t.category_name)
+        index_num = @basis_category_array.index(t.category_name)
+        @basis_percent_array.insert(index_num, (@basis_percent_array[index_num] + t.percent))
+        @basis_percent_array.delete_at(index_num + 1)
+      else
+        @basis_category_array.push(t.category_name)
+        @basis_percent_array.push(t.percent)
+        if @basis_category_array.include?("Untitled")
+          @basis_color_array.push("rgba(166,166,166,0.5)")
+        else
+          @basis_color_array.push(t.category_task_bases[0].category.color_code)
+        end
+      end
+    end
+    gon.basis_category_array = @basis_category_array
+    gon.basis_percent_array = @basis_percent_array
+    gon.basis_color_array = @basis_color_array
   end
 
   def create

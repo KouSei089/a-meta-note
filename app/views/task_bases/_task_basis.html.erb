@@ -7,7 +7,9 @@
       <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
         <%= task_basis.title %>
         <%= render 'task_bases/color', task_basis: task_basis %>
-        
+        <%= button_to task_basis_path(task_basis), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか" } } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
       </h3>
       <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"><%= task_basis.time_start.strftime( "%H:%M" ) %>-<%= task_basis.time_end.strftime( "%H:%M" ) %></time>
       <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><%= task_basis.percent %>%</p>

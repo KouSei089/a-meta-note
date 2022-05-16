@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
-
+  has_many :schedule_bases, dependent: :destroy
   has_many :schedules, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :categories, dependent: :destroy

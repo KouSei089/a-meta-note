@@ -28,11 +28,11 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-center mt-5">
-        <%= link_to schedule_path(@schedule), data: { turbo: false }  do %>
+       <%= link_to schedule_path(@schedule), data: { turbo: false }  do %>
           <i class="fa-solid fa-arrow-rotate-right text-xl mt-5"></i>
         <% end %>
-        <div class="w-96 h-96">
+      <div class="flex justify-center mt-5">
+        <div class="w-80 lg:w-96 h-80 lg:h-96 ml-4">
           <canvas id="myChart"></canvas>
         </div>
       </div>
@@ -45,24 +45,24 @@
   <%= turbo_frame_tag [@schedule, @task] do %>
     <%= form_with(model: [@schedule, @task], method: :post) do |f| %>
       <div class="flex justfity-start pb-48 mt-5">
-        <button type="submit" class="mr-5">
+        <button type="submit" class="mr-2 lg:mr-5">
           <i class="fa-solid fa-plus text-2xl"></i>
         </button>
-        <div class="relative group mx-2 z-0">
-          <input type="time" name="task[time_start]" id="task_time_start" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="task_time_start" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Start</label>
+        <div class="relative group mx-1 lg:mx-2 z-0">
+          <input type="time" name="task[time_start]" id="task_time_start" class="block py-2.5 px-0 w-16 lg:w-full text-xs lg:text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+          <label for="task_time_start" class="peer-focus:font-medium absolute text-xs lg:text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Start</label>
         </div>
-        <div class="relative group mx-2 z-0">
-          <input type="time" name="task[time_end]" id="task_time_end" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <div class="relative group mx-1 lg:mx-2 z-0">
+          <input type="time" name="task[time_end]" id="task_time_end" class="block py-2.5 px-0 w-16 lg:w-full text-xs lg:text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
           <label for="task_time_end" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">End</label>
         </div>
         <div class="relative z-0 group mx-2">
-          <input type="text" name="task[title]" id="task_title" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="task_title" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
+          <input type="text" name="task[title]" id="task_title" class="block py-2.5 px-0 w-16 lg:w-full text-xs lg:text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+          <label for="task_title" class="peer-focus:font-medium absolute text-xs lg:text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
         </div>
         <div class="relative mx-2">
           <label class="text-xs text-gray-500 absolute bottom-9 scale-90">Category</label>
-          <%= f.collection_select :category_name, Category.all, :name, :name, options = { include_blank: true }, class: "py-2.5 px-0 w-36 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
+          <%= f.collection_select :category_name, Category.all, :name, :name, options = { include_blank: true }, class: "py-2.5 px-0 w-20 lg:w-36 text-xs lg:text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
         </div>
         <%= f.hidden_field :schedule_id, value: @schedule.id %>
       </div>

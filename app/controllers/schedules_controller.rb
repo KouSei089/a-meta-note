@@ -9,6 +9,7 @@ class SchedulesController < ApplicationController
   def show
     @tasks = @schedule.tasks.order(time_start: :asc)
     @task = current_user.tasks.new
+    @task_bases = current_user.task_bases.order(time_start: :asc)
     @category_array = []
     @percent_array = []
     @color_array = []

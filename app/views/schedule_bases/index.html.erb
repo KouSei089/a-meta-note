@@ -3,3 +3,9 @@
   <%=f.text_field :title %>
   <%=f.submit %>
 <% end %>
+
+<% @schedule_bases.each do |schedule_basis| %>
+  <%= schedule_basis.title %>
+  <%= link_to "詳細", schedule_basis_path(schedule_basis) %>
+<% end %>
+

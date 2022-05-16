@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       get 'privacy'
     end
   end
-  resources :schedule_bases, only: [:index, :create, :show, :destroy]
+  resources :schedule_bases, only: [:index, :create, :show, :destroy] do
+    resources :tasks, only: [:new, :create]
+  end
   resources :schedules do
     resources :tasks, only: [:new, :create]
   end

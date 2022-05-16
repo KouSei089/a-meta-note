@@ -1,0 +1,2 @@
+class CategoryTaskBasis < ApplicationRecord
+end

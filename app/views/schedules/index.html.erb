@@ -1,20 +1,20 @@
 <%= render 'shared/flash' %>
-<div class="bg-natural pb-48 h-screen">
+<div class="bg-natural pb-12 lg:pb-48 h-min-screen lg:h-screen">
   <%= render 'schedules/search' %>
   <div class="flex justify-center">
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-col-1 lg:grid-cols-3 gap-1 lg:gap-3 my-5 lg:my-0">
       <button type="button" data-modal-toggle="authentication-modal">
-        <div class="card w-96 pt-32 pb-48 bg-primary hover:bg-base-300 shadow-xl mx-5 mt-5">
+        <div class="card w-72 lg:w-96 h-96 lg:h-128 pt-32 pb-48 bg-primary hover:bg-base-300 shadow-xl mx-0 lg:mx-5 mt-5">
           <div class="card-body items-center text-center">
             <div class="card-actions">
-              <i class="fa-solid fa-plus text-6xl mt-12"></i>
+              <i class="fa-solid fa-plus text-6xl mt-0 lg:mt-12"></i>
             </div>
           </div>
         </div>
       </button>
       <%= render 'schedules/modal_form', schedule: @schedule %>
       <% @schedules.each do |schedule| %>
-        <div class="card w-96 h-128 py-32 bg-base-100 shadow-xl mx-5 mt-5 relative">
+        <div class="card w-72 lg:w-96 h-96 lg:h-128 py-32 bg-base-100 shadow-xl mx-0 lg:mx-5 mt-5 relative">
           <p class="absolute top-1 left-1">Izumi.h</p>
           <div class="card-body items-center text-center">
             <div class="card-actions text-2xl"><%= link_to schedule.title, schedule_path(schedule) %></div>
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="">
-            <%= link_to schedule_path(schedule), class: "absolute left-36 bottom-0 pt-5 mb-0.5 bg-headline hover:bg-agate text-natural hover:text-headline w-24 rounded-t-full", method: :get do %>
+            <%= link_to schedule_path(schedule), class: "absolute left-24 lg:left-36 bottom-0 pt-5 mb-0.5 bg-headline hover:bg-agate text-natural hover:text-headline w-24 rounded-t-full", method: :get do %>
                 <i class="fa-solid fa-chevron-up ml-10"></i>
             <% end %>
           </div>

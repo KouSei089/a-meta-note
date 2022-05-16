@@ -1,0 +1,26 @@
+<div class="flex flex-col lg:flex-row">
+  <div class="px-5">
+    <div date-rangepicker class="flex items-center">
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <i class="fa-solid fa-calendar"></i>
+        </div>
+        <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+      </div>
+      <span class="px-4 text-gray-500">to</span>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <i class="fa-solid fa-calendar"></i>
+        </div>
+        <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+      </div>
+    </div>
+  </div>
+  <div class="px-5 pt-7 lg:pt-0">
+    <label for="default-toggle" class="inline-flex relative items-center cursor-pointer">
+      <input type="checkbox" value="" id="default-toggle" class="sr-only peer">
+      <div class="w-11 h-6 bg-headline peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-headline rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-base-300 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-base-100 after:border-headline after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:headline"></div>
+      <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Sort</span>
+    </label>
+  </div>
+</div>

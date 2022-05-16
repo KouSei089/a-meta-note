@@ -6,10 +6,13 @@ Rails.application.routes.draw do
       get 'privacy'
     end
   end
+  resources :schedule_bases, only: [:index, :create, :show, :destroy] do
+    resources :task_bases, only: [:new, :create]
+  end
   resources :schedules do
     resources :tasks, only: [:new, :create]
   end
-  resources :tasks, only: :destroy
+  resources :tasks, only: :destroy 
   resources :categories, except: :show
   resources :users, only: [:new, :create]
   get 'login' => 'user_sessions#new', :as => :login

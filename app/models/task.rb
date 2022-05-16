@@ -1,6 +1,5 @@
 class Task < ApplicationRecord
   belongs_to :schedule
-  belongs_to :schedule_base
   belongs_to :user
   has_many :task_categories, dependent: :destroy
   has_many :categories, through: :task_categories

@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   resources :schedule_bases, only: [:index, :create, :show, :destroy] do
     resources :task_bases, only: [:new, :create]
   end
+  resources :task_bases, only: :destroy
   resources :schedules do
     resources :tasks, only: [:new, :create]
   end
-  resources :tasks, only: :destroy 
+  resources :tasks, only: :destroy
   resources :categories, except: :show
   resources :users, only: [:new, :create]
   get 'login' => 'user_sessions#new', :as => :login

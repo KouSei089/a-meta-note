@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
   resources :schedule_bases, only: [:index, :create, :show, :destroy] do
-    resources :tasks, only: [:new, :create]
+    resources :task_bases, only: [:new, :create]
   end
   resources :schedules do
     resources :tasks, only: [:new, :create]

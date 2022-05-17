@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_003409) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["pattren"], name: "index_schedule_bases_on_pattren", unique: true
     t.index ["user_id"], name: "index_schedule_bases_on_user_id"
   end
 

@@ -7,5 +7,6 @@ class CreateScheduleBases < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :schedule_bases, ["pattren"], unique: true
   end
 end

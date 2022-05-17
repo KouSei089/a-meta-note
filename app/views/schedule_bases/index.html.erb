@@ -1,8 +1,10 @@
-<%= form_with model: @schedule_basis, local: true do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.collection_select :pattren, Pattren.all, :name, :name, options = { include_blank: true } %>
-  <%= f.submit %>
+<% if @schedule_bases.count < 2 %>
+  <%= form_with model: @schedule_basis, local: true do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.collection_select :pattren, Pattren.all, :name, :name, options = { include_blank: true } %>
+    <%= f.submit %>
+  <% end %>
 <% end %>
 
 <% @schedule_bases.each do |schedule_basis| %>

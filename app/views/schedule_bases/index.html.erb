@@ -1,11 +1,13 @@
 <%= form_with model: @schedule_basis, local: true do |f| %>
-  <%=f.label :title %>
-  <%=f.text_field :title %>
-  <%=f.submit %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.collection_select :pattren, Pattren.all, :name, :name, options = { include_blank: true } %>
+  <%= f.submit %>
 <% end %>
 
 <% @schedule_bases.each do |schedule_basis| %>
   <%= schedule_basis.title %>
+  <%= schedule_basis.pattren %>
   <%= link_to "詳細", schedule_basis_path(schedule_basis) %>
 <% end %>
 

@@ -42,8 +42,7 @@ class ScheduleBasesController < ApplicationController
 
   private
 
-  def schedule_basis_params
-    params.require(:schedule_basis).permit(:title)
-  end
-
+    def schedule_basis_params
+      params.require(:schedule_basis).permit(:title, :pattren)
+    end
 end

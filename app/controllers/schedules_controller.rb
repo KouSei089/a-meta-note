@@ -9,7 +9,6 @@ class SchedulesController < ApplicationController
   def show
     @tasks = @schedule.tasks.order(time_start: :asc)
     @task = current_user.tasks.new
-    @task_bases = current_user.task_bases.order(time_start: :asc)
     @category_array = []
     @percent_array = []
     @color_array = []
@@ -31,9 +30,14 @@ class SchedulesController < ApplicationController
     gon.category_array = @category_array
     gon.percent_array = @percent_array
     gon.color_array = @color_array
-    #他
-    @schedule_basis = current_user.schedule_bases.find(1)
-    @task_basis =  @schedule_basis.task_bases.new
+    # schedule_baseロジック
+    @schedule_basis = if @schedule.pattren.include?("weekday")
+                        current_user.schedule_bases.find_by(pattren: "weekday")
+                      else
+                        current_user.schedule_bases.find_by(pattren: "holiday")
+                      end
+    @task_bases = @schedule_basis.task_bases.order(time_start: :asc)
+    @task_basis = @schedule_basis.task_bases.new
     @basis_category_array = []
     @basis_percent_array = []
     @basis_color_array = []
@@ -74,7 +78,7 @@ class SchedulesController < ApplicationController
   private
 
     def schedule_params
-      params.require(:schedule).permit(:title)
+      params.require(:schedule).permit(:title, :pattren)
     end
 
     def set_schedule

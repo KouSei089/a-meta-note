@@ -1,11 +1,25 @@
 <div class="flex flex-col">
   <div class="flex flex-col">
-    <div>
+    <div class="flex justify-start">
       <h1 class="font-bold text-2xl">
       <span><%= link_to :back do %>
       <i class="fa-solid fa-chevron-right pr-2"></i>
       <% end %><span>Schedule Basis</span>
       </h1>
+      <label for="my-modal"><i class="fa-solid fa-trash mt-2 ml-2"></i></label>
+      <input type="checkbox" id="my-modal" class="modal-toggle">
+      <div class="modal">
+        <div class="modal-box relative">
+          <label for="my-modal" class="btn btn-sm btn-circle absolute right-3 top-3">✕</label>
+          <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
+          <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+          <div class="modal-action">
+            <%= button_to schedule_basis_path(@schedule_basis), method: :delete do %>
+              <label for="my-modal" class="btn btn-error">delete</label>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
     <%= link_to schedule_basis_path(@schedule_basis), data: { turbo: false }  do %>
       <i class="fa-solid fa-arrow-rotate-right text-xl mt-5"></i>

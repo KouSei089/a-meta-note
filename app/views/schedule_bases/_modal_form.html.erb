@@ -8,8 +8,8 @@
         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Schedule Create</h3>
         <%= form_with model: schedule, local: true do |f| %>
           <div class="relative z-0 group mx-2">
-            <input type="date" name="schedule[title]" id="schedule_title" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-            <label for="schedule_title" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date</label>
+            <input type="text" name="schedule_basis[title]" id="schedule_basis_title" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="schedule_basis_title" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date</label>
           </div>
           <%= f.collection_select :pattren, Pattren.all, :name, :name, options = { include_blank: true }, class: "py-2.5 px-0 w-20 lg:w-36 text-xs lg:text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" %>
           <button type="submit" class="btn btn-primary mt-2">submit</button>

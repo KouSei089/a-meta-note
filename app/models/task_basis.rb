@@ -4,6 +4,11 @@ class TaskBasis < ApplicationRecord
   has_many :category_task_bases, dependent: :destroy
   has_many :categories, through: :category_task_bases
 
+  validates :title, presence: true
+  validates :time_start, presence: true
+  validates :time_end, presence: true
+  validates :percent, presence: true
+
   def percent_calculation
     if time_start > time_end
       start_parse = time_start.end_of_day - time_start

@@ -5,7 +5,7 @@ class CreateTaskBases < ActiveRecord::Migration[7.0]
       t.string :category_name, null: false
       t.time    :time_start, null: false
       t.time    :time_end, null: false
-      t.integer :percent
+      t.integer :percent, null: false
       t.references :schedule_basis, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.timestamps

@@ -1,9 +1,11 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :destroy]
+  before_action :set_q, only: [:index]
 
   def index
     @schedules = Schedule.order(title: :DESC)
     @schedule = Schedule.new
+    @results = @q.result
   end
 
   def show
@@ -76,6 +78,10 @@ class SchedulesController < ApplicationController
   end
 
   private
+
+    def set_q
+      @q = Schedule.ransack(params[:q])
+    end
 
     def schedule_params
       params.require(:schedule).permit(:title, :pattren)

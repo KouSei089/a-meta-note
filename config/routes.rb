@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
   resources :task_bases, only: :destroy
   resources :schedules do
+    collection do
+      get 'search'
+    end
     resources :tasks, only: [:new, :create]
   end
   resources :tasks, only: :destroy

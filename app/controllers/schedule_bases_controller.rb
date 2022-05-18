@@ -40,6 +40,12 @@ class ScheduleBasesController < ApplicationController
     gon.color_array = @color_array
   end
 
+  def destroy
+    @schedule_basis = current_user.schedule_bases.find(params[:id])
+    @schedule_basis.destroy!
+    redirect_to schedule_bases_path, notice: 'Schedule was successfully deleted.', status: :see_other
+  end
+
   private
 
     def schedule_basis_params

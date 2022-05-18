@@ -1,16 +1,14 @@
 <div class="mt-12">
-  <div class="flex flex-row">
+  <div class="flex flex-col lg:flex-row">
     <div class="flex flex-col">
-      <div class="flex justify-start">
+      <div class="flex justify-start pr-96">
         <div class="flex flex-col">
           <div class="flex justify-start">
-            <div>
-              <h1 class="font-bold text-2xl">
-              <span><%= link_to :back do %>
-              <i class="fa-solid fa-chevron-right pr-2"></i>
-              <% end %><span>Schedule <span><%= @schedule.title %></span>
-              </h1>
-            </div>
+            <h1 class="font-bold text-2xl">
+            <span><%= link_to :back do %>
+            <i class="fa-solid fa-chevron-right pr-2"></i>
+            <% end %><span>Schedule <span><%= @schedule.title %></span>
+            </h1>
             <label for="my-modal"><i class="fa-solid fa-trash mt-2 ml-2"></i></label>
             <input type="checkbox" id="my-modal" class="modal-toggle">
             <div class="modal">
@@ -19,30 +17,30 @@
                 <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
                 <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
                 <div class="modal-action">
-                  <%= button_to "#", method: :delete do %>
+                  <%= button_to schedule_path(@schedule), method: :delete do %>
                     <label for="my-modal" class="btn btn-error">delete</label>
                   <% end %>
                 </div>
               </div>
             </div>
-            <%= link_to schedule_path(@schedule), data: { turbo: false }  do %>
-              <i class="fa-solid fa-arrow-rotate-right text-xl mt-5"></i>
-            <% end %>
-            <div class="flex justify-center mt-5">
-              <div class="w-80 lg:w-96 h-80 lg:h-96 ml-4">
-                <canvas id="myChart"></canvas>
-              </div>
+          </div>
+          <%= link_to schedule_path(@schedule), data: { turbo: false }  do %>
+            <i class="fa-solid fa-arrow-rotate-right text-xl mt-5"></i>
+          <% end %>
+          <div class="flex justify-center mt-5">
+            <div class="w-80 lg:w-96 h-80 lg:h-96 ml-4">
+              <canvas id="myChart"></canvas>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="text-2xl my-5">Time Schedule1</h2>
+      <h2 class="text-2xl my-5">Time Schedule</h2>
       <div id="tasks">
         <%= render @tasks %>
       </div>
       <%= turbo_frame_tag [@schedule, @task] do %>
         <%= form_with(model: [@schedule, @task], method: :post) do |f| %>
-          <div class="flex justfity-start pb-48 mt-5">
+          <div class="flex justfity-start pb-24 lg:pb-48 mt-5">
             <button type="submit" class="mr-2 lg:mr-5">
               <i class="fa-solid fa-plus text-2xl"></i>
             </button>
@@ -70,31 +68,29 @@
     <div class="flex flex-col">
       <div class="flex justify-start">
         <div class="flex flex-col">
-          <div class="flex justify-start">
-            <div>
-              <h1 class="font-bold text-2xl">
-              <span><%= link_to :back do %>
-              <i class="fa-solid fa-chevron-right pr-2"></i>
-              <% end %><span>Schedule base<%= @schedule_basis.id %><span></span>
-              </h1>
-            </div>
-            <div class="flex justify-center mt-5">
-              <div class="w-80 lg:w-96 h-80 lg:h-96 ml-4">
-                <canvas id="basisChart"></canvas>
-              </div>
+          <div>
+            <h1 class="font-bold text-2xl">
+            <span><%= link_to :back do %>
+            <i class="fa-solid fa-chevron-right pr-2"></i>
+            <% end %></span><span>Schedule Basis</span>
+            </h1>
+          </div>
+          <div class="flex justify-center mt-5">
+            <div class="w-80 lg:w-96 h-80 lg:h-96 ml-4">
+              <canvas id="basisChart"></canvas>
             </div>
           </div>
         </div>
       </div>
       <div>
-        <h2 class="text-2xl my-5">Time Schedule2</h2>
+        <h2 class="text-2xl my-5">Time Schedule Basis</h2>
         <div id="task_bases">
           <%= render @task_bases %>
         </div>
       </div>
       <%= turbo_frame_tag [@schedule_basis, @task_basis] do %>
         <%= form_with(model: [@schedule_basis, @task_basis], method: :post) do |f| %>
-          <div class="flex justfity-start pb-48 mt-5">
+          <div class="flex justfity-start pb-24 lg:pb-48 mt-5">
             <button type="submit" class="mr-2 lg:mr-5">
               <i class="fa-solid fa-plus text-2xl"></i>
             </button>
@@ -144,10 +140,6 @@
     plugins: {
       legend: {
         position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Polar Area Chart'
       }
     }
   },
@@ -179,10 +171,6 @@
     plugins: {
       legend: {
         position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Polar Area Chart'
       }
     }
   },

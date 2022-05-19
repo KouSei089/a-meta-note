@@ -1,6 +1,8 @@
 <div class="navbar bg-natural py-5 lg:py-10">
   <div class="flex-1">
-    <%= link_to 'a meta note', schedules_path, class: "text-3xl lg:text-4xl ml-2 lg:pl-16" %>
+    <%= link_to schedules_path, class: 'ml-2 lg:pl-16' do %>
+      <%= image_tag 'logo_transparent.png', class: 'h-20 w-20' %>
+    <% end %>
   </div>
   <% if current_user %>
     <div class="flex-none mr-4 lg:mr16 mt-2 lg:mt-4">

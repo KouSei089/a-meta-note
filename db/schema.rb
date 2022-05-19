@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_003409) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "color"
-    t.string "color_code"
+    t.string "name", null: false
+    t.string "color", null: false
+    t.string "color_code", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_003409) do
     t.string "category_name", null: false
     t.time "time_start", null: false
     t.time "time_end", null: false
-    t.integer "percent"
+    t.integer "percent", null: false
     t.bigint "schedule_basis_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_003409) do
     t.string "category_name", null: false
     t.time "time_start", null: false
     t.time "time_end", null: false
-    t.integer "percent"
+    t.integer "percent", null: false
     t.bigint "schedule_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

@@ -4,11 +4,10 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     @task.percent_calculation
-    @task.category_name.presence || @task.category_name = ("Untitled")
+    @task.category_name_exist
     if @task.save
       unless @task.category_name == "Untitled"
-        categories = Category.all
-        @categories_select = categories.select { |category| category.name == @task.category_name }
+        @categories_select = Category.all.category_name_match(@task)
         @task.categories << @categories_select[0]
       end
       flash.now.notice = "Task was successfully created."

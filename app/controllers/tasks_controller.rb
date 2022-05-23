@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  include TaskModule
+
   def new; end
 
   def create
@@ -6,10 +8,7 @@ class TasksController < ApplicationController
     @task.percent_calculation
     @task.category_name_exist
     if @task.save
-      unless @task.category_name == "Untitled"
-        @categories_select = Category.all.category_name_match(@task)
-        @task.categories << @categories_select[0]
-      end
+      task_category_name?(@task)
       flash.now.notice = "Task was successfully created."
     else
       redirect_to schedules_path

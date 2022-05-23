@@ -8,6 +8,4 @@ class TaskBasis < ApplicationRecord
   validates :time_start, presence: true
   validates :time_end, presence: true
   validates :percent, presence: true
-
-  scope :category_name_match, ->(task) { select { |category| category.name == task.category_name } }
 end

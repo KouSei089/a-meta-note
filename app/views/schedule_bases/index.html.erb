@@ -12,9 +12,9 @@
           </div>
         </div>
       </button>
-      <% if @schedule_bases.count < 2 %>
+      <%# <% if @schedule_bases.count < 2 %>
         <%= render 'schedule_bases/modal_form', schedule: @schedule_basis %>
-      <% end %>
+      <%# <% end %>
       <% @schedule_bases.each do |schedule_basis| %>
         <div class="card w-80 lg:w-96 h-96 lg:h-128 py-32 bg-base-100 shadow-xl mx-0 lg:mx-5 mt-5 relative">
           <p class="absolute top-1 left-1">Izumi.h</p>

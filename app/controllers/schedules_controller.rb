@@ -3,9 +3,8 @@ class SchedulesController < ApplicationController
   before_action :set_q, only: [:index]
 
   def index
-    @schedules = Schedule.order(title: :DESC)
     @schedule = Schedule.new
-    @results = @q.result
+    @results = @q.result.order(title: :DESC)
   end
 
   def show

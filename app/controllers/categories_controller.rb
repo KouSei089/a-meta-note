@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
     end
 
     def set_categories
-      @categories = Category.all
+      @categories = Category.where(user_id: current_user.id).includes(:user).all
     end
 
     def category_params

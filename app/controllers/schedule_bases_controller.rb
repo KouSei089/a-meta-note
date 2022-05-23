@@ -1,7 +1,7 @@
 class ScheduleBasesController < ApplicationController
   def index
     @schedule_basis = ScheduleBasis.new
-    @schedule_bases = ScheduleBasis.all
+    @schedule_bases = ScheduleBasis.where(user_id: current_user.id).includes(:user).all
   end
 
   def create

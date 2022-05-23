@@ -3,9 +3,8 @@ class SchedulesController < ApplicationController
   before_action :set_q, only: [:index]
 
   def index
-    @schedules = Schedule.order(title: :DESC)
     @schedule = Schedule.new
-    @results = @q.result
+    @results = @q.result.order(title: :DESC)
   end
 
   def show
@@ -80,7 +79,7 @@ class SchedulesController < ApplicationController
   private
 
     def set_q
-      @q = Schedule.ransack(params[:q])
+      @q = Schedule.where(user_id: current_user.id).includes(:user).ransack(params[:q])
     end
 
     def schedule_params

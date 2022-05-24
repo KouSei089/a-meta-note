@@ -1,9 +1,11 @@
 <div class="mt-12">
+  <h1 class="font-bold text-2xl text-center">Analysis Feedback</h1>
   <div class="flex justify-center mt-5">
     <div class="w-80 lg:w-96 h-48 lg:h-56 ">
       <canvas id="analysisChart"></canvas>
     </div>
   </div>
+  <p class="mb-5 text-center">Deviation values between planned and actual schedule are displayed.</p>
   <div class="flex flex-col lg:flex-row">
     <div class="flex flex-col">
       <div class="flex justify-start pr-96">
@@ -130,8 +132,8 @@
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Analysis Feed Back',
-      backgroundColor: ["rgba(166,166,166,0.5)"],
+      label: 'Analysis Feedback',
+      backgroundColor: gon.color_results,
       data: gon.percent_results,
     }]
   };

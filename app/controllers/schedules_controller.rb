@@ -60,6 +60,35 @@ class SchedulesController < ApplicationController
     gon.basis_category_array = @basis_category_array
     gon.basis_percent_array = @basis_percent_array
     gon.basis_color_array = @basis_color_array
+    #数値結果算出のロジック
+    @name_results = []
+    @percent_results = []
+    task_category_results = []
+    task_category_names = @tasks.pluck(:category_name).uniq
+    #=> ["勉強", "家事", "振り返り"]
+    task_basis_category_names = @task_bases.pluck(:category_name).uniq
+    #=> ["勉強", "家事"]
+    task_category_results =  task_category_names & task_basis_category_names
+    task_count = task_category_results.count
+    #=> 3
+    index_num = 0
+
+    task_count.times do
+      task_categories_sames = @tasks.where(category_name: task_category_results[index_num])
+      task_percent_sum = task_categories_sames.pluck(:percent).sum
+      task_basis_categories_sames = @task_bases.where(category_name: task_category_results[index_num])
+      task_basis_percent_sum = task_basis_categories_sames.pluck(:percent).sum
+      if task_percent_sum > task_basis_percent_sum
+        percent_result = task_percent_sum - task_basis_percent_sum
+      else
+        percent_result = task_basis_percent_sum - task_percent_sum
+      end
+      @name_results.push(task_categories_sames[0].category_name)
+      @percent_results.push(percent_result)
+      index_num += 1
+    end
+    gon.name_results = @name_results
+    gon.percent_results = @percent_results
   end
 
   def create

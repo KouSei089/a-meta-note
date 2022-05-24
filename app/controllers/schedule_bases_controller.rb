@@ -22,7 +22,7 @@ class ScheduleBasesController < ApplicationController
     @category_array = []
     @percent_array = []
     @color_array = []
-    add_task_analyses(@task_bases)
+    add_task_basis_analyses(@task_bases)
     gon.category_array = @category_array
     gon.percent_array = @percent_array
     gon.color_array = @color_array

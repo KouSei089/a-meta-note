@@ -1,29 +1,6 @@
 <%= render 'shared/flash' %>
 <div class="bg-natural pb-12 lg:pb-48 h-min-screen lg:h-screen">
-  <%= search_form_for @q do |f| %>
-    <div class="flex flex-col lg:flex-row">
-      <div class="px-3">
-        <div class="flex items-center">
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <i class="fa-solid fa-calendar"></i>
-            </div>
-            <%= f.date_field :title_gteq, class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 lg:w-38 pl-8 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Select date start" %>
-          </div>
-          <span class="px-1 text-gray-500">to</span>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <i class="fa-solid fa-calendar"></i>
-            </div>
-            <%= f.date_field :title_lteq_end_of_day, class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 lg:w-38 pl-8 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Select date end" %>
-          </div>
-          <button type="submit" class="ml-2 lg:ml-5">
-            <i class="fa-solid fa-magnifying-glass text-xl"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'schedules/search', q: @q %>
   <div class="flex justify-center">
     <div class="grid grid-col-1 lg:grid-cols-3 gap-1 lg:gap-3 my-5 lg:my-0">
       <button type="button" data-modal-toggle="authentication-modal">
@@ -37,20 +14,7 @@
       </button>
       <%= render 'schedules/modal_form', schedule: @schedule %>
       <% @results.each do |schedule| %>
-        <div class="card w-80 lg:w-96 h-96 lg:h-128 py-32 bg-base-100 shadow-xl mx-0 lg:mx-5 mt-5 relative">
-          <p class="absolute top-1 left-1">Izumi.h</p>
-          <div class="card-body items-center text-center">
-            <div class="card-actions text-2xl"><%= link_to schedule.title, schedule_path(schedule) %></div>
-            <div class="mt-8">
-              <p>There are <span class="text-agate"><%= schedule.tasks.length %></span>tasks in this schedule.</p>
-            </div>
-          </div>
-          <div class="">
-            <%= link_to schedule_path(schedule), class: "absolute left-28 lg:left-36 bottom-0 pt-5 mb-0.5 bg-headline hover:bg-agate text-natural hover:text-headline w-24 rounded-t-full", method: :get do %>
-                <i class="fa-solid fa-chevron-up ml-10"></i>
-            <% end %>
-          </div>
-        </div>
+        <%= render 'schedules/search_result', schedule: schedule %>
       <% end %>
     </div>
   </div>

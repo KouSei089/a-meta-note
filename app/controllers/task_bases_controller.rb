@@ -1,16 +1,14 @@
 class TaskBasesController < ApplicationController
+  include TaskModule
+
   def new; end
 
   def create
     @task_basis = current_user.task_bases.build(task_basis_params)
     @task_basis.percent_calculation
-    @task_basis.category_name.presence || @task_basis.category_name = ("Untitled")
+    @task_basis.category_name_exist
     if @task_basis.save
-      unless @task_basis.category_name == "Untitled"
-        categories = Category.all
-        @categories_select = categories.select { |category| category.name == @task_basis.category_name }
-        @task_basis.categories << @categories_select[0]
-      end
+      task_category_name?(@task_basis)
       flash.now.notice = "Task was successfully created."
     else
       redirect_to schedule_bases_path

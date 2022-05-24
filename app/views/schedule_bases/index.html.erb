@@ -3,35 +3,22 @@
   <h1 class="text-xl">Schedule Basis Index</h1>
   <div class="flex justify-center">
     <div class="grid grid-col-1 lg:grid-cols-3 gap-1 lg:gap-3 my-5 lg:my-0">
-      <button type="button" data-modal-toggle="authentication-modal">
-        <div class="card w-80 lg:w-96 h-96 lg:h-128 pt-32 pb-48 bg-primary hover:bg-base-300 shadow-xl mx-0 lg:mx-5 mt-5">
-          <div class="card-body items-center text-center">
-            <div class="card-actions">
-              <i class="fa-solid fa-plus text-6xl mt-0 lg:mt-12"></i>
-            </div>
-          </div>
-        </div>
-      </button>
       <% if @schedule_bases.count < 2 %>
-        <%= render 'schedule_bases/modal_form', schedule: @schedule_basis %>
-      <% end %>
-      <% @schedule_bases.each do |schedule_basis| %>
-        <div class="card w-80 lg:w-96 h-96 lg:h-128 py-32 bg-base-100 shadow-xl mx-0 lg:mx-5 mt-5 relative">
-          <p class="absolute top-1 left-1"><%= current_user.username %></p>
-          <div class="card-body items-center text-center">
-            <div class="card-actions text-2xl"><%= link_to schedule_basis.title, schedule_bases_path(schedule_basis) %></div>
-            <div class="mt-8">
-              <p>This one is schedule-based.</p>
-              <p>There are  <span class="text-agate"><%= schedule_basis.task_bases.length %></span>tasks.</p>
+        <% @schedule_bases.each do |schedule_basis| %>
+          <div class="card w-80 lg:w-96 h-96 lg:h-128 py-32 bg-base-100 shadow-xl mx-0 lg:mx-5 mt-5 relative">
+            <p class="absolute top-1 left-1"><%= current_user.username %></p>
+            <div class="card-body items-center text-center">
+              <div class="card-actions text-2xl"><%= link_to schedule_basis.title, schedule_bases_path(schedule_basis) %></div>
+              <div class="mt-8">
+                <p>This one is schedule-based.</p>
+                <p>There are  <span class="text-agate"><%= schedule_basis.task_bases.length %></span>tasks.</p>
+              </div>
             </div>
-          </div>
-          <div class="">
-            <%= link_to schedule_basis_path(schedule_basis), class: "absolute left-28 lg:left-36 bottom-0 pt-5 mb-0.5 bg-headline hover:bg-agate text-natural hover:text-headline w-24 rounded-t-full", method: :get do %>
-                <i class="fa-solid fa-chevron-up ml-10"></i>
-            <% end %>
-          </div>
-        </div>
+          </button>
+          <%= render 'schedule_bases/modal_form', schedule: @schedule_basis %>
+        <% end %>
       <% end %>
+      <%= render @schedule_bases %>
     </div>
   </div>
 </div>

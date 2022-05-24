@@ -36,6 +36,11 @@
     </div>
   <% else %>
     <div class="flex-none lg:mr-10">
+      <div tabindex="0" class="px-2 lg:mx-4">
+        <%= link_to demo_login_path, data: { turbo_method: :post }, class: 'btn btn-ghost btn-circle' do %>
+          <i class="fa-solid fa-user-astronaut text-xl"></i>
+        <% end %>
+      </div>
       <label tabindex="0" class="btn btn-ghost btn-circle px-2">
         <%= link_to new_user_path, class: 'btn btn-ghost btn-circle' do %>
           <i class="fa-solid fa-user-plus text-xl"></i>

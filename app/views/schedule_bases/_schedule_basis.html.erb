@@ -1,7 +1,7 @@
 <div class="card w-80 lg:w-96 h-96 lg:h-128 py-32 bg-base-100 shadow-xl mx-0 lg:mx-5 mt-5 relative">
   <p class="absolute top-1 left-1">Izumi.h</p>
   <div class="card-body items-center text-center">
-    <div class="card-actions text-2xl"><%= link_to schedule_basis.title, schedule_bases_path(schedule_basis) %></div>
+    <div class="card-actions text-2xl"><%= link_to schedule_basis.title, schedule_basis_path(schedule_basis) %></div>
     <div class="mt-8">
       <p class="text-primary">This one is schedule-based.</p>
       <p class="text-primary">There are  <span class="text-agate"><%= schedule_basis.task_bases.length %></span>tasks.</p>

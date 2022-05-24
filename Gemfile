@@ -19,6 +19,7 @@ gem 'meta-tags'
 gem 'sorcery'
 gem 'active_hash'
 gem 'ransack'
+gem 'faker'
 # gem "redis", "~> 4.0"
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"

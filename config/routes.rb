@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root "top_pages#show"
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'login' => "user_sessions#create"
+  post 'logout' => 'user_sessions#destroy', :as => :logout
+  post '/demo_login', to: 'user_sessions#demo_login'
   resource :regulation, only: [:terms, :privacy] do
     collection do
       get 'terms'
@@ -19,9 +23,6 @@ Rails.application.routes.draw do
   resources :tasks, only: :destroy
   resources :categories, except: :show
   resources :users, only: [:new, :create]
-  get 'login' => 'user_sessions#new', :as => :login
-  post 'login' => "user_sessions#create"
-  post 'logout' => 'user_sessions#destroy', :as => :logout
   get '*not_found' => 'application#routing_error'
   post '*not_found' => 'application#routing_error'
 end

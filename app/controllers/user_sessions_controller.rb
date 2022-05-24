@@ -1,5 +1,7 @@
 class UserSessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :demo_login]
+
+  include DemoUserModule
 
   def new; end
 
@@ -12,6 +14,15 @@ class UserSessionsController < ApplicationController
       flash.now[:alert] = 'Login failed'
       render :new
     end
+  end
+
+  def demo_login
+    @demo_user = User.demo_user_create
+    categories_create
+    schedule_basis_create
+    schedule_create
+    auto_login(@demo_user)
+    redirect_to schedules_path, notice: 'You logged in as a guest'
   end
 
   def destroy

@@ -1,6 +1,9 @@
 <div class="mt-12">
-  <%= @name_results %>
-  <%= @percent_results %> 
+  <div class="flex justify-center mt-5">
+    <div class="w-80 lg:w-96 h-48 lg:h-56 ">
+      <canvas id="analysisChart"></canvas>
+    </div>
+  </div>
   <div class="flex flex-col lg:flex-row">
     <div class="flex flex-col">
       <div class="flex justify-start pr-96">
@@ -121,12 +124,42 @@
 </div>
 
 
-
 <script>
-  const labels = gon.category_array
+  const labels = gon.name_results
 
   const data = {
     labels: labels,
+    datasets: [{
+      label: 'Analysis Feed Back',
+      backgroundColor: ["rgba(166,166,166,0.5)"],
+      data: gon.percent_results,
+    }]
+  };
+
+  const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      }
+    }
+  },
+};
+
+  const analysisChart = new Chart(
+    document.getElementById('analysisChart'),
+    config
+  );
+</script>
+
+<script>
+  const analysisLabels = gon.category_array
+
+  const analysisData = {
+    labels: analysisLabels,
     datasets: [{
       label: 'My First dataset',
       backgroundColor: gon.color_array,
@@ -134,9 +167,9 @@
     }]
   };
 
-  const config = {
+  const analysisConfig = {
   type: 'polarArea',
-  data: data,
+  data: analysisData,
   options: {
     responsive: true,
     plugins: {
@@ -149,7 +182,7 @@
 
   const myChart = new Chart(
     document.getElementById('myChart'),
-    config
+    analysisConfig
   );
 </script>
 

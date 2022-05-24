@@ -87,6 +87,8 @@ class SchedulesController < ApplicationController
       @percent_results.push(percent_result)
       index_num += 1
     end
+    gon.name_results = @name_results
+    gon.percent_results = @percent_results
   end
 
   def create

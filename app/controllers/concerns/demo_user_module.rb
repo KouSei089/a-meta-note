@@ -36,7 +36,7 @@ module DemoUserModule
       TaskBasis.create!(
         user_id: @demo_user.id,
         schedule_basis_id: 1,
-        title: "DemoData",
+        title: Faker::Music.band,
         time_start: "Sat, 01 Jan 2000 #{start_num}:00:00.000000000 JST +09:00",
         time_end: "Sat, 01 Jan 2000 #{end_num}:00:00.000000000 JST +09:00",
         category_name: category.name,
@@ -66,7 +66,7 @@ module DemoUserModule
       Task.create!(
         user_id: @demo_user.id,
         schedule_id: 1,
-        title: "DemoData",
+        title: Faker::Music.band,
         time_start: "Sat, 01 Jan 2000 #{start_num}:00:00.000000000 JST +09:00",
         time_end: "Sat, 01 Jan 2000 #{end_num}:00:00.000000000 JST +09:00",
         category_name: category.name,

@@ -79,7 +79,7 @@ class SchedulesController < ApplicationController
   private
 
     def set_q
-      @q = Schedule.ransack(params[:q])
+      @q = Schedule.where(user_id: current_user.id).includes(:user).ransack(params[:q])
     end
 
     def schedule_params

@@ -3,5 +3,5 @@ class ScheduleBasis < ApplicationRecord
   has_many :task_bases, dependent: :destroy
 
   validates :title, presence: true
-  validates :pattren, uniqueness: true, presence: true
+  validates :pattren, presence: true
 end

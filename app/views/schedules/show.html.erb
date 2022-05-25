@@ -1,4 +1,7 @@
 <div class="mt-12">
+  <%= link_to schedule_path(@schedule), data: { turbo: false }  do %>
+    <i class="fa-solid fa-arrow-rotate-right text-xl"></i>
+  <% end %>
   <h1 class="font-bold text-2xl text-center">Analysis Feedback</h1>
   <div class="flex justify-center mt-5">
     <div class="w-80 lg:w-96 h-48 lg:h-56 ">
@@ -31,9 +34,6 @@
               </div>
             </div>
           </div>
-          <%= link_to schedule_path(@schedule), data: { turbo: false }  do %>
-            <i class="fa-solid fa-arrow-rotate-right text-xl mt-5"></i>
-          <% end %>
           <div class="flex justify-center mt-5">
             <div class="w-80 lg:w-96 h-80 lg:h-96 ml-4">
               <canvas id="myChart"></canvas>

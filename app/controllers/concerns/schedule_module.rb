@@ -64,9 +64,13 @@ module ScheduleModule
                        else
                          task_basis_percent_sum - task_percent_sum
                        end
+      if percent_result == 0
+        next
+      else
+        @percent_results.push(percent_result)
+      end
       @name_results.push(task_categories_sames[0].category_name)
       @color_results.push(task_categories_sames[0].categories[0].color_code)
-      @percent_results.push(percent_result)
       index_num += 1
     end
   end

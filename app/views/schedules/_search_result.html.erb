@@ -1,5 +1,5 @@
 <div class="card w-80 lg:w-96 h-96 lg:h-128 py-32 bg-base-100 shadow-xl mx-0 lg:mx-5 mt-5 relative">
-  <p class="absolute top-1 left-1">Izumi.h</p>
+  <p class="absolute top-1 left-1"><%= current_user.username %></p>
   <div class="card-body items-center text-center">
     <div class="card-actions text-2xl"><%= link_to schedule.title, schedule_path(schedule) %></div>
     <div class="mt-8">

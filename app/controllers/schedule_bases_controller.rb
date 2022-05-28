@@ -19,13 +19,13 @@ class ScheduleBasesController < ApplicationController
     @schedule_basis = current_user.schedule_bases.find(params[:id])
     @task_basis = current_user.task_bases.new
     @task_bases = @schedule_basis.task_bases.all
-    @category_array = []
-    @percent_array = []
-    @color_array = []
+    @basis_category_array = []
+    @basis_percent_array = []
+    @basis_color_array = []
     add_task_basis_analyses(@task_bases)
-    gon.category_array = @category_array
-    gon.percent_array = @percent_array
-    gon.color_array = @color_array
+    gon.basis_category_array = @basis_category_array
+    gon.basis_percent_array = @basis_percent_array
+    gon.basis_color_array = @basis_color_array
   end
 
   def destroy

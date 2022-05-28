@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   post 'logout' => 'user_sessions#destroy', :as => :logout
-  post '/demo_login', to: 'user_sessions#demo_login'
+  # post '/demo_login', to: 'user_sessions#demo_login'
   resource :regulation, only: [:terms, :privacy] do
     collection do
       get 'terms'
